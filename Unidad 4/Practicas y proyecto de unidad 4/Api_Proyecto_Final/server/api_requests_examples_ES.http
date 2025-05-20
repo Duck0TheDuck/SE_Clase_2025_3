@@ -1,0 +1,226 @@
+### API de Dispositivos IoT - Ejemplos de Solicitudes
+### Este archivo contiene ejemplos de solicitudes HTTP para todas las operaciones CRUD
+### Puedes usar estos con REST Client en VS Code o herramientas similares
+
+### URL Base (ajustar si es necesario)
+@baseUrl = http://localhost:8000
+
+### Endpoint raíz
+GET {{baseUrl}}/
+Accept: application/json
+
+## Operaciones CRUD de Test ##
+
+### Obtener todos los tests
+GET {{baseUrl}}/tests/
+Accept: application/json
+
+### Obtener test por ID
+GET {{baseUrl}}/tests/1
+Accept: application/json
+
+### Crear un nuevo test
+POST {{baseUrl}}/tests/?title=Ejemplo%20Test
+Accept: application/json
+
+### Eliminar un test
+DELETE {{baseUrl}}/tests/1
+Accept: application/json
+
+## Operaciones CRUD de DevicesInfo ##
+
+### Obtener información de todos los dispositivos
+GET {{baseUrl}}/devices/info/
+Accept: application/json
+
+### Obtener información de dispositivo por ID
+GET {{baseUrl}}/devices/info/1
+Accept: application/json
+
+### Crear información de un nuevo dispositivo
+POST {{baseUrl}}/devices/info/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "id_type": 1,
+  "id_signal_type": 1,
+  "nombre": "Sensor de Temperatura",
+  "vendor": "Acme Inc."
+}
+
+### Actualizar información de un dispositivo
+PUT {{baseUrl}}/devices/info/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "id_type": 1,
+  "id_signal_type": 1,
+  "nombre": "Sensor de Temperatura Actualizado",
+  "vendor": "Acme Inc."
+}
+
+### Eliminar información de un dispositivo
+DELETE {{baseUrl}}/devices/info/1
+Accept: application/json
+
+## Operaciones CRUD de DevicesRecords ##
+
+### Obtener todos los registros de dispositivos
+GET {{baseUrl}}/devices/records/
+Accept: application/json
+
+### Obtener registro de dispositivo por ID
+GET {{baseUrl}}/devices/records/1
+Accept: application/json
+
+### Obtener registros de dispositivo por ID de dispositivo
+GET {{baseUrl}}/devices/records/device/1
+Accept: application/json
+
+### Crear un nuevo registro de dispositivo
+POST {{baseUrl}}/devices/records/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_record": 1,
+  "id_device": 1,
+  "current_value": 25.5,
+  "date_record": "2023-06-01T12:00:00"
+}
+
+### Actualizar un registro de dispositivo
+PUT {{baseUrl}}/devices/records/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_record": 1,
+  "id_device": 1,
+  "current_value": 26.7,
+  "date_record": "2023-06-01T13:00:00"
+}
+
+### Eliminar un registro de dispositivo
+DELETE {{baseUrl}}/devices/records/1
+Accept: application/json
+
+## Operaciones CRUD de TomaDecisiones ##
+
+### Obtener todas las decisiones
+GET {{baseUrl}}/decisiones/
+Accept: application/json
+
+### Obtener decisión por ID
+GET {{baseUrl}}/decisiones/1
+Accept: application/json
+
+### Crear una nueva decisión
+POST {{baseUrl}}/decisiones/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_decision": 1,
+  "velocidad": 50.5,
+  "decision": 1,
+  "date_record": "2023-06-01T12:00:00"
+}
+
+### Actualizar una decisión
+PUT {{baseUrl}}/decisiones/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_decision": 1,
+  "velocidad": 55.0,
+  "decision": 2,
+  "date_record": "2023-06-01T13:00:00"
+}
+
+### Eliminar una decisión
+DELETE {{baseUrl}}/decisiones/1
+Accept: application/json
+
+## Operaciones CRUD de Luces ##
+
+### Obtener todas las luces
+GET {{baseUrl}}/luces/
+Accept: application/json
+
+### Obtener luz por ID
+GET {{baseUrl}}/luces/1
+Accept: application/json
+
+### Crear una nueva luz
+POST {{baseUrl}}/luces/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "lumens": 800,
+  "nombre": "Luz de Sala de Estar",
+  "vendor": "Philips"
+}
+
+### Actualizar una luz
+PUT {{baseUrl}}/luces/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "lumens": 1000,
+  "nombre": "Luz de Sala de Estar Actualizada",
+  "vendor": "Philips"
+}
+
+### Eliminar una luz
+DELETE {{baseUrl}}/luces/1
+Accept: application/json
+
+## Operaciones CRUD de ControladorVoltaje ##
+
+### Obtener todos los controladores de voltaje
+GET {{baseUrl}}/controladores/
+Accept: application/json
+
+### Obtener controlador de voltaje por ID
+GET {{baseUrl}}/controladores/1
+Accept: application/json
+
+### Crear un nuevo controlador de voltaje
+POST {{baseUrl}}/controladores/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "encendido": true,
+  "voltaje": 220.0,
+  "nombre": "Controlador de Energía Principal",
+  "vendor": "Siemens"
+}
+
+### Actualizar un controlador de voltaje
+PUT {{baseUrl}}/controladores/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "encendido": false,
+  "voltaje": 110.0,
+  "nombre": "Controlador de Energía Principal Actualizado",
+  "vendor": "Siemens"
+}
+
+### Eliminar un controlador de voltaje
+DELETE {{baseUrl}}/controladores/1
+Accept: application/json

@@ -1,0 +1,77 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Introducción}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Descripción General}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Características Principales}{2}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Instalación y Configuración}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Requisitos Previos}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Instalación de Dependencias}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Configuración de la Base de Datos}{3}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Ejecución de la API}{3}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Arquitectura de la Aplicación}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Estructura del Proyecto}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Flujo de Datos}{5}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Modelos de Datos}{6}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Modelos SQLAlchemy}{6}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}DevicesInfoDB}{6}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}DevicesRecordsDB}{6}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}TomaDecisionesDB}{6}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}LucesDB}{7}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}ControladorVoltajeDB}{7}{subsection.4.1.5}%
+\contentsline {section}{\numberline {4.2}Modelos Pydantic}{7}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}DevicesInfo y DevicesInfoResponse}{7}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}DevicesRecords y DevicesRecordsResponse}{8}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}TomaDecisiones y TomaDecisionesResponse}{8}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Luces y LucesResponse}{8}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}ControladorVoltaje y ControladorVoltajeResponse}{9}{subsection.4.2.5}%
+\contentsline {chapter}{\numberline {5}Endpoints de la API}{10}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Endpoint Raíz}{10}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Endpoints de Test}{10}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}GET /tests/}{10}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}GET /tests/\{test\_id\}}{10}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}POST /tests/?title=\{title\}}{10}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}DELETE /tests/\{test\_id\}}{11}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}Endpoints de DevicesInfo}{11}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}GET /devices/info/}{11}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}GET /devices/info/\{id\_device\}}{11}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}POST /devices/info/}{11}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}PUT /devices/info/\{id\_device\}}{11}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}DELETE /devices/info/\{id\_device\}}{11}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.4}Endpoints de DevicesRecords}{12}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}GET /devices/records/}{12}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}GET /devices/records/\{id\_record\}}{12}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}GET /devices/records/device/\{id\_device\}}{12}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}POST /devices/records/}{12}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}PUT /devices/records/\{id\_record\}}{12}{subsection.5.4.5}%
+\contentsline {subsection}{\numberline {5.4.6}DELETE /devices/records/\{id\_record\}}{12}{subsection.5.4.6}%
+\contentsline {section}{\numberline {5.5}Endpoints de TomaDecisiones}{13}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}GET /decisiones/}{13}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}GET /decisiones/\{id\_decision\}}{13}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}POST /decisiones/}{13}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}PUT /decisiones/\{id\_decision\}}{13}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}DELETE /decisiones/\{id\_decision\}}{13}{subsection.5.5.5}%
+\contentsline {section}{\numberline {5.6}Endpoints de Luces}{13}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}GET /luces/}{13}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}GET /luces/\{id\_device\}}{14}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}POST /luces/}{14}{subsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.6.4}PUT /luces/\{id\_device\}}{14}{subsection.5.6.4}%
+\contentsline {subsection}{\numberline {5.6.5}DELETE /luces/\{id\_device\}}{14}{subsection.5.6.5}%
+\contentsline {section}{\numberline {5.7}Endpoints de ControladorVoltaje}{14}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}GET /controladores/}{14}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}GET /controladores/\{id\_device\}}{14}{subsection.5.7.2}%
+\contentsline {subsection}{\numberline {5.7.3}POST /controladores/}{15}{subsection.5.7.3}%
+\contentsline {subsection}{\numberline {5.7.4}PUT /controladores/\{id\_device\}}{15}{subsection.5.7.4}%
+\contentsline {subsection}{\numberline {5.7.5}DELETE /controladores/\{id\_device\}}{15}{subsection.5.7.5}%
+\contentsline {chapter}{\numberline {6}Ejemplos de Uso}{16}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Ejemplos de Solicitudes HTTP}{16}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Obtener Información de Todos los Dispositivos}{16}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Crear Información de un Nuevo Dispositivo}{16}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Actualizar Información de un Dispositivo}{16}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Crear un Nuevo Registro de Dispositivo}{17}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Crear una Nueva Luz}{17}{subsection.6.1.5}%
+\contentsline {subsection}{\numberline {6.1.6}Crear un Nuevo Controlador de Voltaje}{17}{subsection.6.1.6}%
+\contentsline {chapter}{\numberline {7}Documentación Interactiva}{18}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Buenas Prácticas y Recomendaciones}{19}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Manejo de Errores}{19}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Seguridad}{19}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Escalabilidad}{19}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Conclusiones}{21}{chapter.9}%

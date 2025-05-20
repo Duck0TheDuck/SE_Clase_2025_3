@@ -1,0 +1,301 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\geometry{a4paper, margin=1in}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Documentación del Proyecto API}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    {\huge\bfseries Documentación del Proyecto API\par}
+    \vspace{2cm}
+    
+    \begin{figure}[h]
+        \centering\includegraphics{logo_uat}
+        \caption*{Logo de la Universidad}
+    \end{figure}
+    
+    \vspace{2cm}
+    
+    {\Large\bfseries Integrantes del Equipo:\par}
+    \vspace{0.5cm}
+    
+
+
+
+        Juan Julián Paniagua Rico - a2213332303 \\
+        Isaac Sayeg Posadas Perez - a2213332197  \\
+        Jorge Alberto García Azzua - a2221335006 \\
+
+
+    \vfill
+    
+    {\large Universidad Autónoma de Tamaulipas\par}
+    {\large Diseño de Sistemas Embebidos\par}
+    {\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introducción}
+Este documento proporciona una descripción detallada de la API REST desarrollada para el curso de Diseño de Sistemas Embebidos. El proyecto consiste en una API que interactúa con una base de datos PostgreSQL para almacenar y recuperar datos relacionados con el monitoreo de dispositivos y la toma de decisiones basada en parámetros de velocidad y distancia.
+
+\section{Tecnologías Utilizadas}
+\subsection{Stack Tecnológico Principal}
+\begin{itemize}
+    \item \textbf{Backend:} Node.js v20.10.5 con Express v4.18.2
+    \item \textbf{Lenguaje:} TypeScript v5.3.3
+    \item \textbf{Base de Datos:} PostgreSQL v8.11.3
+    \item \textbf{ORM:} Prisma v6.7.0
+    \item \textbf{Motor de Plantillas:} EJS v3.1.10
+    \item \textbf{Contenedorización:} Docker
+\end{itemize}
+
+\subsection{Dependencias Principales}
+\begin{itemize}
+    \item \textbf{dotenv:} v16.3.1 - Gestión de variables de entorno
+    \item \textbf{@prisma/client:} v6.7.0 - Cliente de Prisma para interacción con la base de datos
+    \item \textbf{ts-node:} v10.9.2 - Ejecución de TypeScript
+    \item \textbf{nodemon:} v3.0.2 - Reinicio automático del servidor durante desarrollo
+\end{itemize}
+
+\section{Arquitectura del Proyecto}
+El proyecto sigue una arquitectura MVC (Modelo-Vista-Controlador) modificada con la siguiente estructura:
+
+\subsection{Estructura de Directorios}
+\begin{itemize}
+    \item \textbf{src/} - Directorio principal del código fuente
+    \begin{itemize}
+        \item \textbf{config/} - Archivos de configuración y constantes
+        \item \textbf{controller/} - Lógica de controladores
+        \item \textbf{models/} - Modelos de datos y consultas
+        \item \textbf{routes/} - Definición de rutas API
+        \item \textbf{services/} - Lógica de negocio
+        \item \textbf{views/} - Vistas EJS
+        \item \textbf{generated/} - Código generado por Prisma
+    \end{itemize}
+    \item \textbf{prisma/} - Definición del esquema de base de datos
+    \item \textbf{dist/} - Código JavaScript compilado
+\end{itemize}
+
+\section{Base de Datos}
+\subsection{Esquema de Base de Datos}
+El sistema utiliza dos tablas principales:
+
+\subsubsection{devices\_info}
+Almacena información sobre los dispositivos:
+\begin{itemize}
+    \item \textbf{id\_device:} Clave primaria autoincremental
+    \item \textbf{id\_type:} Identificador del tipo de dispositivo
+    \item \textbf{id\_signal\_type:} Identificador del tipo de señal
+    \item \textbf{nombre:} Nombre del dispositivo
+    \item \textbf{vendor:} Fabricante del dispositivo
+\end{itemize}
+
+\subsubsection{devices\_records}
+Registra las lecturas de los dispositivos:
+\begin{itemize}
+    \item \textbf{id\_record:} Clave primaria autoincremental
+    \item \textbf{id\_device:} Clave foránea referenciando devices\_info
+    \item \textbf{current\_value:} Valor registrado
+    \item \textbf{date\_record:} Marca de tiempo del registro
+\end{itemize}
+
+\section{API Endpoints}
+\subsection{Endpoints Disponibles}
+
+\subsubsection{PUT /insert\_test}
+\begin{itemize}
+    \item \textbf{Descripción:} Inserta un registro de decisión
+    \item \textbf{Parámetros:}
+    \begin{itemize}
+        \item velocidad (número)
+        \item distancia (número)
+        \item decision (número)
+    \end{itemize}
+    \item \textbf{Respuesta:} Confirmación de inserción
+\end{itemize}
+
+\section{Configuración del Entorno de Desarrollo}
+
+\subsection{Requisitos Previos}
+\begin{itemize}
+    \item Node.js (v20.10.5 o superior)
+    \item PostgreSQL
+    \item Docker (opcional)
+    \item npm (incluido con Node.js)
+\end{itemize}
+
+\subsection{Instalación y Configuración}
+\begin{enumerate}
+    \item Clonar el repositorio
+    \item Ejecutar \texttt{npm install} para instalar dependencias
+    \item Crear archivo \texttt{.env} con las variables de entorno necesarias:
+    \begin{lstlisting}
+    DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/nombre_db"
+    DB_USER=usuario
+    DB_HOST=localhost
+    DB_NAME=nombre_db
+    DB_PASSWORD=contraseña
+    DB_PORT=5432
+    \end{lstlisting}
+    \item Ejecutar migraciones de Prisma: \texttt{npx prisma migrate dev}
+    \item Iniciar el servidor: \texttt{npm run dev}
+\end{enumerate}
+
+\subsection{Scripts Disponibles}
+\begin{itemize}
+    \item \texttt{npm start} - Inicia el servidor en producción
+    \item \texttt{npm run dev} - Inicia el servidor en modo desarrollo
+    \item \texttt{npm run build} - Compila el código TypeScript
+    \item \texttt{npm run watch} - Compila en modo observador
+\end{itemize}
+
+\section{Despliegue}
+
+\subsection{Despliegue con Docker}
+\begin{enumerate}
+    \item Construir la imagen: \texttt{docker build -t api-proyecto .}
+    \item Ejecutar el contenedor: \texttt{docker run -p 3000:3000 api-proyecto}
+\end{enumerate}
+
+\subsection{Despliegue Manual}
+\begin{enumerate}
+    \item Ejecutar \texttt{npm run build}
+    \item Configurar variables de entorno
+    \item Ejecutar \texttt{npm start}
+\end{enumerate}
+
+\section{Documentación Detallada del Código}
+
+\subsection{Módulos Principales}
+
+\subsubsection{Conexión a Base de Datos (conexion\_db.ts)}
+Este módulo maneja la conexión a la base de datos PostgreSQL:
+\begin{itemize}
+    \item \textbf{Pool de Conexiones:} Implementa un pool de conexiones usando pg-pool
+    \item \textbf{Variables de Entorno:} Utiliza dotenv para gestionar la configuración segura
+    \item \textbf{Funciones Principales:}
+    \begin{itemize}
+        \item \texttt{get\_connection():} Establece y verifica la conexión a la base de datos
+        \item \texttt{pool:} Instancia del pool de conexiones con configuración desde variables de entorno
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Punto de Entrada (index.ts)}
+Archivo principal que inicializa la aplicación:
+\begin{itemize}
+    \item \textbf{Configuración Express:} Inicialización del servidor web
+    \item \textbf{Gestión de Rutas:} Implementación del endpoint PUT /insert\_test
+    \item \textbf{Manejo de Errores:} Implementación de try-catch para gestión de errores
+    \item \textbf{Cierre Seguro:} Manejo del evento SIGINT para cierre limpio de conexiones
+\end{itemize}
+
+\subsubsection{Consultas Almacenadas (sp\_queries.ts)}
+Módulo para gestionar procedimientos almacenados:
+\begin{itemize}
+    \item \textbf{sp\_insert\_decision:} 
+    \begin{itemize}
+        \item \textbf{Propósito:} Inserta registros de decisiones en la base de datos
+        \item \textbf{Parámetros:}
+        \begin{itemize}
+            \item velocidad\_param\_numeric: número
+            \item distancia\_param\_numeric: número
+            \item decision\_param\_numeric: número
+        \end{itemize}
+        \item \textbf{Manejo de Errores:} Implementa try-catch-finally con cierre de conexión
+    \end{itemize}
+\end{itemize}
+
+\subsection{Módulos en Desarrollo}
+
+\subsubsection{Controladores (sp\_controller.ts)}
+Módulo para la lógica de controladores:
+\begin{itemize}
+    \item Actualmente importa servicios para futura implementación
+    \item Pendiente implementación de lógica de negocio
+\end{itemize}
+
+\subsubsection{Servicios (services.ts)}
+Módulo para la lógica de negocio:
+\begin{itemize}
+    \item Archivo creado y preparado para implementación
+    \item Destinado a contener la lógica de negocio principal
+\end{itemize}
+
+\subsubsection{Rutas (routes.ts)}
+Módulo para la definición de rutas:
+\begin{itemize}
+    \item Preparado para implementación de rutas adicionales
+    \item Permitirá una mejor organización de endpoints
+\end{itemize}
+
+\subsubsection{Operaciones CRUD (cruds.ts)}
+Módulo para operaciones básicas de base de datos:
+\begin{itemize}
+    \item Planificado para implementar operaciones CRUD usando Prisma ORM
+    \item Pendiente desarrollo de funciones básicas (Create, Read, Update, Delete)
+\end{itemize}
+
+\section{Flujo de Datos}
+\begin{enumerate}
+    \item El cliente realiza una petición HTTP al endpoint /insert\_test
+    \item El servidor valida y procesa los datos recibidos
+    \item Se establece conexión con la base de datos a través del pool
+    \item Se ejecuta el procedimiento almacenado con los parámetros
+    \item Se devuelve la respuesta al cliente
+\end{enumerate}
+
+\section{Mejores Prácticas Implementadas}
+\begin{itemize}
+    \item \textbf{Seguridad:} Uso de variables de entorno para datos sensibles
+    \item \textbf{Gestión de Conexiones:} Implementación de pool de conexiones
+    \item \textbf{Tipado Fuerte:} Uso de TypeScript para prevenir errores
+    \item \textbf{Manejo de Errores:} Implementación de try-catch en operaciones críticas
+    \item \textbf{Modularidad:} Separación clara de responsabilidades en módulos
+\end{itemize}
+
+\section{Conclusión}
+Este proyecto implementa una API REST robusta para el monitoreo de dispositivos y toma de decisiones. Utiliza tecnologías modernas y sigue las mejores prácticas de desarrollo. La arquitectura modular permite una fácil expansión y mantenimiento del sistema.
+\end{document}
