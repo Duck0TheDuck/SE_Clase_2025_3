@@ -1,0 +1,226 @@
+### IoT Devices API - Example Requests
+### This file contains example HTTP requests for all CRUD operations
+### You can use these with REST Client in VS Code or similar tools
+
+### Base URL (adjust if needed)
+@baseUrl = http://localhost:8000
+
+### Root endpoint
+GET {{baseUrl}}/
+Accept: application/json
+
+## Test CRUD Operations ##
+
+### Get all tests
+GET {{baseUrl}}/tests/
+Accept: application/json
+
+### Get test by ID
+GET {{baseUrl}}/tests/1
+Accept: application/json
+
+### Create a new test
+POST {{baseUrl}}/tests/?title=Test%20Example
+Accept: application/json
+
+### Delete a test
+DELETE {{baseUrl}}/tests/1
+Accept: application/json
+
+## DevicesInfo CRUD Operations ##
+
+### Get all devices info
+GET {{baseUrl}}/devices/info/
+Accept: application/json
+
+### Get device info by ID
+GET {{baseUrl}}/devices/info/1
+Accept: application/json
+
+### Create a new device info
+POST {{baseUrl}}/devices/info/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "id_type": 1,
+  "id_signal_type": 1,
+  "nombre": "Temperature Sensor",
+  "vendor": "Acme Inc."
+}
+
+### Update a device info
+PUT {{baseUrl}}/devices/info/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "id_type": 1,
+  "id_signal_type": 1,
+  "nombre": "Updated Temperature Sensor",
+  "vendor": "Acme Inc."
+}
+
+### Delete a device info
+DELETE {{baseUrl}}/devices/info/1
+Accept: application/json
+
+## DevicesRecords CRUD Operations ##
+
+### Get all device records
+GET {{baseUrl}}/devices/records/
+Accept: application/json
+
+### Get device record by ID
+GET {{baseUrl}}/devices/records/1
+Accept: application/json
+
+### Get device records by device ID
+GET {{baseUrl}}/devices/records/device/1
+Accept: application/json
+
+### Create a new device record
+POST {{baseUrl}}/devices/records/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_record": 1,
+  "id_device": 1,
+  "current_value": 25.5,
+  "date_record": "2023-06-01T12:00:00"
+}
+
+### Update a device record
+PUT {{baseUrl}}/devices/records/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_record": 1,
+  "id_device": 1,
+  "current_value": 26.7,
+  "date_record": "2023-06-01T13:00:00"
+}
+
+### Delete a device record
+DELETE {{baseUrl}}/devices/records/1
+Accept: application/json
+
+## TomaDecisiones CRUD Operations ##
+
+### Get all decisions
+GET {{baseUrl}}/decisiones/
+Accept: application/json
+
+### Get decision by ID
+GET {{baseUrl}}/decisiones/1
+Accept: application/json
+
+### Create a new decision
+POST {{baseUrl}}/decisiones/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_decision": 1,
+  "velocidad": 50.5,
+  "decision": 1,
+  "date_record": "2023-06-01T12:00:00"
+}
+
+### Update a decision
+PUT {{baseUrl}}/decisiones/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_decision": 1,
+  "velocidad": 55.0,
+  "decision": 2,
+  "date_record": "2023-06-01T13:00:00"
+}
+
+### Delete a decision
+DELETE {{baseUrl}}/decisiones/1
+Accept: application/json
+
+## Luces CRUD Operations ##
+
+### Get all lights
+GET {{baseUrl}}/luces/
+Accept: application/json
+
+### Get light by ID
+GET {{baseUrl}}/luces/1
+Accept: application/json
+
+### Create a new light
+POST {{baseUrl}}/luces/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "lumens": 800,
+  "nombre": "Living Room Light",
+  "vendor": "Philips"
+}
+
+### Update a light
+PUT {{baseUrl}}/luces/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "lumens": 1000,
+  "nombre": "Updated Living Room Light",
+  "vendor": "Philips"
+}
+
+### Delete a light
+DELETE {{baseUrl}}/luces/1
+Accept: application/json
+
+## ControladorVoltaje CRUD Operations ##
+
+### Get all voltage controllers
+GET {{baseUrl}}/controladores/
+Accept: application/json
+
+### Get voltage controller by ID
+GET {{baseUrl}}/controladores/1
+Accept: application/json
+
+### Create a new voltage controller
+POST {{baseUrl}}/controladores/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "encendido": true,
+  "voltaje": 220.0,
+  "nombre": "Main Power Controller",
+  "vendor": "Siemens"
+}
+
+### Update a voltage controller
+PUT {{baseUrl}}/controladores/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id_device": 1,
+  "encendido": false,
+  "voltaje": 110.0,
+  "nombre": "Updated Main Power Controller",
+  "vendor": "Siemens"
+}
+
+### Delete a voltage controller
+DELETE {{baseUrl}}/controladores/1
+Accept: application/json
